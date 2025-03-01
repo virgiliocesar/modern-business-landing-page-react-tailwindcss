@@ -7,8 +7,8 @@ const Navbar = () => {
 
     const navLinks = [
         {href: '#home', label: 'Home'},
-        {href: '#about', label: 'About Us'},
-        {href: '#services', label: 'Our Services' },
+        {href: '#about', label: 'About'},
+        {href: '#services', label: 'Services' },
         { href: '#testmonials', label: 'Testmonials' },
     ]
 
@@ -27,8 +27,24 @@ const Navbar = () => {
                 </div>
 
                 {/* desktop navitems */}
+                <div className='hidden md:flex items-center gap-10'>
+                    {navLinks.map((link, index) => (
+                        <a 
+                            key={index} 
+                            href={link.href} 
+                            className={`text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all ${activeLink === link.href? 'text-blue-600 after:w-full' : 'hover:text-gray-600'}`} 
+                            onClick={() => {
+                                setIsMenuOpen(false)
+                                setActiveLink(link.href)
+                            }}
+                        >
+                            {link.label}
+                        </a>
+                    ))}
+                </div>
 
                 {/* get in touch btn */}
+                <button className='hidden md:block py-2.5 px-6 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-all hover:shadow-lg hover:shadow-blue-600/50 cursor-pointer'><a href="#newsletter">Entre em contato</a></button>
 
                 {/* mobile menu */}
 
